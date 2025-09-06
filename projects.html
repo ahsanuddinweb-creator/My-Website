@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Ahsan</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ============================
+       গ্লোবাল সেটিংস
+    ============================ */
+    :root {
+      --bg: #0b1220;
+      --card: #0f1724;
+      --muted: #94a3b8;
+      --accent: #06b6d4;
+      --accent2: #7c3aed;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: #e6eef8;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+
+    /* ============================
+       Wrapper
+    ============================ */
+    .wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+
+    /* ============================
+       Header
+    ============================ */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    header h1 { font-size: 28px; color: #fff; }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #94a3b8;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover { color: #fff; border-color: var(--accent2); }
+
+    /* ============================
+       Projects Section
+    ============================ */
+    .projects-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 24px;
+    }
+    .project-card {
+      background: var(--card);
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--accent2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .project-card h3 { margin-bottom: 12px; color: #fff; font-size: 20px; }
+    .project-card p { color: var(--muted); margin-bottom: 16px; }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      color: #fff;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover { filter: brightness(1.2); }
+
+    /* ============================
+       Footer
+    ============================ */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 40px;
+      padding: 12px;
+    }
+
+    /* ============================
+       Responsive
+    ============================ */
+    @media(max-width:600px){
+      .projects-section { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Header -->
+    <header>
+      <a href="index.html" class="btn-ghost">Home</a>
+      <h1>My Projects</h1>
+    </header>
+
+    <!-- Projects Section -->
+    <main>
+      <section class="projects-section">
+        <div class="project-card">
+          <h3>Personal Portfolio</h3>
+          <p>HTML/CSS, responsive one-page portfolio.</p>
+          <a href="#" class="btn-primary">View Project</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Small Business Site</h3>
+          <p>Static website for local business.</p>
+          <a href="#" class="btn-primary">View Project</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Interactive Game</h3>
+          <p>Small browser game made with JavaScript.</p>
+          <a href="#" class="btn-primary">View Project</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Blog Template</h3>
+          <p>Simple blog layout with clean cards.</p>
+          <a href="#" class="btn-primary">View Project</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>© Ahsan • Built with ❤️</footer>
+  </div>
+</body>
+</html>

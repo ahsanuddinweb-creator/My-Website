@@ -1,0 +1,270 @@
+/* ============================
+   :root ভেরিয়েবলস
+   (রঙ, ব্যাকগ্রাউন্ড, রেডিয়াস)
+============================ */
+:root {
+  --bg: #0b1220;
+  --card: #0f1724;
+  --muted: #94a3b8;
+  --accent: #06b6d4;
+  --accent2: #7c3aed;
+  --radius: 12px;
+}
+
+/* ============================
+   গ্লোবাল রিসেট
+   (সব এলিমেন্টের মার্জিন, প্যাডিং)
+============================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, #071026, #061022);
+  color: #e6eef8;
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+
+/* ============================
+   RGB গ্লোয়িং বর্ডার ইফেক্ট
+============================ */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 4px;
+  background: linear-gradient(270deg, rgb(255, 255, 255), orange, yellow, green, cyan, blue, violet, red);
+  background-size: 600% 600%;
+  animation: rgbBorder 8s linear infinite, glowPulse 2s ease-in-out infinite alternate;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 12px;
+}
+
+@keyframes rgbBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  from { box-shadow: 0 0 10px rgba(255,0,255,0.5), 0 0 20px rgba(0,255,255,0.5); }
+  to   { box-shadow: 0 0 20px rgba(255,255,0,0.7), 0 0 40px rgba(0,255,0,0.7); }
+}
+
+/* ============================
+   Wrapper
+   (মুখ্য কনটেইনার)
+============================ */
+.wrap {
+  max-width: 980px;
+  margin: 28px auto;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================
+   হেডার & ন্যাভবার
+============================ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 64px; height: 64px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: #fff;
+  animation: glow 3s infinite alternate;
+}
+
+h1 {
+  font-size: 20px;
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: gradientText 5s linear infinite;
+}
+
+.subtitle-header { font-size: 13px; color: var(--muted); }
+
+nav ul { display: flex; gap: 12px; list-style: none; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 600; transition: color .3s; }
+nav a:hover { color: #fff; }
+
+/* হেডার অ্যানিমেশন */
+@keyframes glow { from { box-shadow: 0 0 10px var(--accent); } to { box-shadow: 0 0 20px var(--accent2); } }
+@keyframes gradientText { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+
+/* ============================
+   হিরো সেকশন
+============================ */
+.hero {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius: var(--radius);
+}
+
+.hero-left { flex: 1; }
+
+.greet, .title {
+  animation: gradientText 6s linear infinite;
+  background: linear-gradient(90deg, red, blue, green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle { color: var(--muted); margin-bottom: 14px; }
+
+.cta { display: flex; gap: 10px; }
+
+/* বাটন স্টাইল */
+.btn { padding: 10px 14px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; transition: all .3s; }
+.btn-primary { background: linear-gradient(90deg, var(--accent2), var(--accent)); color: #fff; }
+.btn-primary:hover { filter: brightness(1.2); }
+.btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.06); color: var(--muted); }
+.btn-ghost:hover { color: #fff; border-color: var(--accent); }
+
+/* Hero Right (ছবি ও ইনফো) */
+.hero-right {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* ছবি right corner */
+  position: relative;
+}
+
+.hero-img-corner {
+  width: 120px;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  margin-bottom: 16px;
+  transition: transform 0.3s;
+}
+
+.hero-img-corner:hover {
+  transform: scale(1.1);
+}
+
+.info { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+
+/* ============================
+   কার্ডস & প্রজেক্টস সেকশন
+============================ */
+.cards, .projects { display: grid; gap: 14px; }
+.cards { grid-template-columns: repeat(3,1fr); }
+.projects { grid-template-columns: repeat(2,1fr); }
+
+.card, .project {
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  transition: all .4s;
+}
+
+.card:hover { box-shadow: 0 0 15px var(--accent); }
+.project:hover { box-shadow: 0 0 15px var(--accent2); }
+
+.card h3 {
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, #ff0000,#00ff00,#0000ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation: gradientText 8s linear infinite;
+}
+
+.card p, .project p { color: var(--muted); font-size: 14px; }
+
+/* ============================
+   কন্টাক্ট সেকশন
+============================ */
+.contact { display: flex; gap: 16px; align-items: flex-start; }
+.contact form { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+
+input, textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: transparent;
+  color: inherit;
+}
+
+.form-actions { display: flex; gap: 10px; }
+.contact-info {
+  width: 260px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+}
+
+/* ============================
+   About সেকশন
+============================ */
+.about-section {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 12px;
+}
+
+.about-left { flex: 1; min-width: 200px; }
+
+.profile-pic {
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  transition: transform .3s;
+}
+
+.profile-pic:hover { transform: scale(1.05); }
+
+.about-right { flex: 2; min-width: 260px; }
+.about-right h2 { font-size: 20px; margin-bottom: 12px; color: #fff; }
+.about-right p { color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+
+/* ============================
+   ফুটার
+============================ */
+footer {
+  margin-top: 32px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ============================
+   মিডিয়া কুয়েরি
+============================ */
+@media(max-width:900px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .projects{grid-template-columns:1fr}
+  .hero{flex-direction:column}
+  .hero-right{width:100%}
+}
+
+@media(max-width:600px){
+  nav ul{display:none}
+  .cards{grid-template-columns:1fr}
+}
